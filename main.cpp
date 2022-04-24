@@ -86,20 +86,21 @@ long sort(int n, int threads)
 {
 	//Declare max and min for values inside array
 	const int MAX_SIZE = 9;
-  const int MIN_SIZE = 0;
+	const int MIN_SIZE = 0;
+
 	//Initialize unsorted array
-  int* arr = new int[n];
-  for(int i=0; i<n; i++)
-  {
-    arr[i] = rand()%(MAX_SIZE-MIN_SIZE+1)+MIN_SIZE;
-  }
+	int* arr = new int[n];
+	for(int i=0; i<n; i++)
+	{
+		arr[i] = rand()%(MAX_SIZE-MIN_SIZE+1)+MIN_SIZE;
+	}
 
 	auto start = chrono::high_resolution_clock::now();
 	merged_quick_sort(arr, n, threads);
 	auto dur = chrono::high_resolution_clock::now() - start;
 
-  //Delete array
-  delete[] arr;
+	//Delete array
+	delete[] arr;
 
 	return dur.count();
 }
